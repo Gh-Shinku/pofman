@@ -1,0 +1,28 @@
+[package]
+name = "pofman"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98"
+description = "A lightweight SSH port forwarding manager"
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+crossterm = "0.29.0"
+directories = "6.0.0"
+fs2 = "0.4.3"
+ratatui = { version = "0.30.2", default-features = false, features = ["crossterm"] }
+serde = { version = "1.0.229", features = ["derive"] }
+shell-words = "1.1.1"
+sysinfo = { version = "0.40.1", default-features = false, features = ["system"] }
+toml = "1.2.1"
+unicode-width = "0.2.3"
+
+[target."cfg(unix)".dependencies]
+libc = "0.2.191"
+
+[target."cfg(windows)".dependencies]
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_System_Console"] }
+
+[dev-dependencies]
+tempfile = "3.27.0"
